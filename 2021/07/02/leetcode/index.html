@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Sun's blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Sun's blog" type="application/atom+xml">
 </head>
 
 
@@ -500,6 +500,34 @@ fast <span class="token operator">=</span> head<span class="token punctuation">;
     fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">return</span> fast<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="1-2-倒转链表"><a href="#1-2-倒转链表" class="headerlink" title="1.2 倒转链表"></a>1.2 倒转链表</h3><p>[剑指offer06-从尾到头打印链表]<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/</a><br>[剑指offer24-反转链表]<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/">https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/</a><br>反转类型的题都可以考虑用栈做，利用栈先进后出的特性。下方给出剑指offer06利用栈的示例代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>next <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    stack<span class="token punctuation">.</span><span class="token function">addLast</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    head <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>temp<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> res<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> res<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>针对于剑指offer24题依旧可以利用栈来解答，读者可以自行尝试，本处使用另外一种方法头插法（迭代）增加运行速度，下方给出示例代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ListNode</span> pre <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> curr <span class="token operator">=</span> head<span class="token punctuation">,</span> next <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>curr <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    next <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    curr<span class="token punctuation">.</span>next <span class="token operator">=</span> pre<span class="token punctuation">;</span>
+    pre <span class="token operator">=</span> curr<span class="token punctuation">;</span>
+    curr <span class="token operator">=</span> next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> pre<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们可以看到利用迭代只需要循环一次，比起求助于栈速度要快。另外，此处切记不可以求方便省略next节点写成下列形式：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//此时已经改变了curr节点！</span>
+curr<span class="token punctuation">.</span>next <span class="token operator">=</span> pre<span class="token punctuation">;</span>
+pre <span class="token operator">=</span> curr<span class="token punctuation">;</span>
+curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>同理于数组元素的交换，熟能生巧举一反三。<br>同样的问题在二叉树中问题也同样存在本处给出链接[剑指offer27-二叉树的镜像]<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/%EF%BC%8C%E8%AF%BB%E8%80%85%E5%8F%AF%E4%BB%A5%E5%85%88%E8%A1%8C%E6%8C%91%E6%88%98%E3%80%82">https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/，读者可以先行挑战。</a></p>
+
                 
             </div>
             <hr/>
