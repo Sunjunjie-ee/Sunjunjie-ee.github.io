@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>SunJunjie&#39;blog</title>
+  <title>Sun&#39;s blog</title>
   
   <subtitle>[object Object]</subtitle>
   <link href="http://sunjunjie-ee.github.io/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://sunjunjie-ee.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>SunJunjie</name>
     
   </author>
   
