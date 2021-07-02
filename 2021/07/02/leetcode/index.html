@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Sun's blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Sun's blog" type="application/atom+xml">
 </head>
 
 
@@ -483,7 +483,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="秋招算法合集（包含剑指offer和leetcode）-持续更新ing"><a href="#秋招算法合集（包含剑指offer和leetcode）-持续更新ing" class="headerlink" title="秋招算法合集（包含剑指offer和leetcode）      持续更新ing"></a>秋招算法合集（包含剑指offer和leetcode）      持续更新ing</h1><p>记录下自己刷题轨迹，时不时分享些妙妙子的算法。</p>
+                <h1 id="秋招算法合集（包含剑指offer和leetcode）-持续更新ing"><a href="#秋招算法合集（包含剑指offer和leetcode）-持续更新ing" class="headerlink" title="秋招算法合集（包含剑指offer和leetcode）      持续更新ing"></a>秋招算法合集（包含剑指offer和leetcode）      持续更新ing</h1><p>本博客主要目的是记录自己刷题轨迹，整理题型理清思路，利用写博客一方式温故而知新，写者小白一只菜鸡一枚如有写错的地方还望大佬们海涵指点迷津。</p>
 <h2 id="1-LinkedList"><a href="#1-LinkedList" class="headerlink" title="1.LinkedList"></a>1.LinkedList</h2><h3 id="1-1-环形链表"><a href="#1-1-环形链表" class="headerlink" title="1.1 环形链表"></a>1.1 环形链表</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode141-环形链表</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode142-环形链表2</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-duplicate-number/">leetcode287-寻找重复数</a><br>第141题考察点是判断环形链表，第142道题是判断环形的入口点。<br>这三道题都涉及到了环形链表知识点，针对这类问题只需要熟记两次双指针即可，第一次为快慢指针，快指针的步长是慢指针的二倍，当快慢指针第一次相遇时停止。第二次的双指针步数相同。下方列出判断环形的入口的核心代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ListNode</span> fast <span class="token operator">=</span> head<span class="token punctuation">,</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
 <span class="token comment">//第一次快慢指针</span>
@@ -527,6 +527,27 @@ curr<span class="token punctuation">.</span>next <span class="token operator">=<
 pre <span class="token operator">=</span> curr<span class="token punctuation">;</span>
 curr <span class="token operator">=</span> curr<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同理于数组元素的交换，熟能生巧举一反三。<br>同样的问题在二叉树中问题也同样存在本处给出链接<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/">剑指offer27-二叉树的镜像</a>，读者可以先行挑战。</p>
+<h3 id="1-3-倒数第n个节点"><a href="#1-3-倒数第n个节点" class="headerlink" title="1.3 倒数第n个节点"></a>1.3 倒数第n个节点</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/">剑指offer22-链表中倒数第k个节点</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/">剑指offer18-删除链表的节点</a><br>链表中涉及到倒数or删除等字样时，快慢指针往往是一个好办法，利用两个指针分别记录需要的位置进行next连接即可。总而言之，这类问题普遍都不难，想到双指针问题就已经解决了大半。本处给出剑指offer22题的示例代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token class-name">ListNode</span> latter <span class="token operator">=</span> head<span class="token punctuation">,</span> former <span class="token operator">=</span> head<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>latter <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    latter <span class="token operator">=</span> latter<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>latter <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    former <span class="token operator">=</span> former<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    latter <span class="token operator">=</span> latter<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> former<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="1-其他"><a href="#1-其他" class="headerlink" title="1.? 其他"></a>1.? 其他</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">剑指offer25-合并两个排序的链表</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/">剑指offer35-复杂链表的复制</a><br>剑指offer25题并不难只要遍历逐个比较就可以得出结果，有一个需要注意的地方就是头节点的建立，下方给出错误示范和正确样例：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//错误,此处l1或者l2其中有空列表的话会报空指针异常，进行特例分析也显得麻烦，不能直接返回null。</span>
+<span class="token class-name">ListNode</span> head <span class="token operator">=</span> L1<span class="token punctuation">.</span>val <span class="token operator">&gt;</span> l2<span class="token punctuation">.</span>val<span class="token operator">?</span> l2 <span class="token operator">:</span> l1<span class="token punctuation">;</span>
+<span class="token class-name">ListNode</span> res <span class="token operator">=</span> head<span class="token punctuation">;</span>
+
+<span class="token comment">//正确,给头节点附一个值并在返回时将其省略，既优雅又避免了空值的干扰。</span>
+<span class="token class-name">ListNode</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res <span class="token operator">=</span> head<span class="token punctuation">;</span>
+<span class="token keyword">return</span> res<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>剑指offer35题的关键思想是哈希表，利用<code>map.put(curr, new Node(curr.val)</code>，可以巧妙的将节点的属性储存下来，进行深拷贝的时候查询key值也十分便利。再遍历构建新链表各节点的<code>next</code>和<code>random</code>引用指向即可。</p>
 
                 
             </div>
