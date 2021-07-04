@@ -13,7 +13,11 @@
       
       <categories>
           
-          <category> 算法，排序, sort </category>
+          <category> 算法 </category>
+          
+          <category> sort </category>
+          
+          <category> 排序 </category>
           
       </categories>
       
@@ -29,7 +33,7 @@
     
     
     <entry>
-      <title>leetcode</title>
+      <title>校招刷题指南</title>
       <link href="/2021/07/02/leetcode/"/>
       <url>/2021/07/02/leetcode/</url>
       
@@ -38,7 +42,11 @@
       
       <categories>
           
-          <category> leetcode, 剑指offer </category>
+          <category> leetcode </category>
+          
+          <category> 剑指offer </category>
+          
+          <category> java </category>
           
       </categories>
       
