@@ -15,16 +15,16 @@
           
           <category> 算法 </category>
           
-          <category> sort </category>
-          
-          <category> 排序 </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> 算法 </tag>
+            
+            <tag> sort </tag>
+            
+            <tag> 排序 </tag>
             
         </tags>
       
@@ -44,16 +44,16 @@
           
           <category> leetcode </category>
           
-          <category> 剑指offer </category>
-          
-          <category> java </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> leetcode </tag>
+            
+            <tag> 剑指offer </tag>
+            
+            <tag> java </tag>
             
         </tags>
       
