@@ -566,9 +566,8 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
 <span class="token class-name">ListNode</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res <span class="token operator">=</span> head<span class="token punctuation">;</span>
 <span class="token keyword">return</span> res<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>剑指offer35题</strong>的关键思想是哈希表，利用<code>map.put(curr, new Node(curr.val)</code>，可以巧妙的将节点的属性储存下来，进行深拷贝的时候查询key值也十分便利。再遍历构建新链表各节点的<code>next</code>和<code>random</code>引用指向即可。</p>
-<h2 id="2-二叉树"><a href="#2-二叉树" class="headerlink" title="2.二叉树"></a>2.二叉树</h2><ol>
-<li><p>递归实现：</p>
-<p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
+<h2 id="2-二叉树"><a href="#2-二叉树" class="headerlink" title="2.二叉树"></a>2.二叉树</h2><p>在介绍二叉树的问题之前，让我们先来了解下树的几种遍历方式，只要掌握了这几种遍历方式，树的题目都可以迎刃而解。建议读者仔细阅读自己实现一次加深理解。</p>
+<h2 id="2-1-1-递归遍历"><a href="#2-1-1-递归遍历" class="headerlink" title="2.1.1 递归遍历"></a>2.1.1 递归遍历</h2><p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
 <ul>
 <li><p>前序遍历：根-&gt;左-&gt;右</p>
 </li>
@@ -578,8 +577,6 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
 </li>
 </ul>
 <p>下列给出递归实现：</p>
-</li>
-</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//前序</span>
 <span class="token keyword">void</span> <span class="token function">preOrderRecur</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>root <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -601,12 +598,8 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
         <span class="token function">postOrderRecur</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">postOrderRecur</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li><p>非递归实现</p>
-<p>本处开始讨论树的遍历非递归实现。</p>
+<h2 id="2-1-2-非递归遍历"><a href="#2-1-2-非递归遍历" class="headerlink" title="2.1.2 非递归遍历"></a>2.1.2 非递归遍历</h2><p>本处开始讨论树的遍历非递归实现。</p>
 <p>1). 以前序遍历为例，先以根左右的顺序访问根节点，对于任意节点node，先访问其本身，之后判断左子树是否为空，如果不为空则重复上述步骤直到为空为止。当左子树为空时则开始访问右子树，由于访问左子节点之后需要反过来访问其右子节点所以此处借用栈的支持。</p>
-</li>
-</ol>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//前序遍历的非递归实现</span>
 <span class="token keyword">void</span> <span class="token function">preOrderStack</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">TreeNode</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -623,7 +616,7 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>​        2).  层次遍历，层次遍历不同于上述三种遍历方式，层次遍历以每一层的节点为单位进行遍历。层序遍历的代        码较为简单，利用队列的FIFO特性，只需要一个队列即可，现在队列中加入根节点。之后对于任意一个节点        而言，出队列时如果其左子节点于右子节点有不为空的就将其放入队列。</p>
+<p>2).  层次遍历，层次遍历不同于上述三种遍历方式，层次遍历以每一层的节点为单位进行遍历。层序遍历的代        码较为简单，利用队列的FIFO特性，只需要一个队列即可，现在队列中加入根节点。之后对于任意一个节点        而言，出队列时如果其左子节点于右子节点有不为空的就将其放入队列。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//二叉树的层次遍历</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">levelRecur</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">if</span><span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
@@ -641,7 +634,7 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2-1-树的深度遍历"><a href="#2-1-树的深度遍历" class="headerlink" title="2.1 树的深度遍历"></a>2.1 树的深度遍历</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指offer07-重建二叉树</a></p>
+<h2 id="2-2-树的深度遍历"><a href="#2-2-树的深度遍历" class="headerlink" title="2.2 树的深度遍历"></a>2.2 树的深度遍历</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指offer07-重建二叉树</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/">剑指offer26-树的子结构</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/">剑指offer27-二叉树的镜像</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/">剑指offer28-对称的二叉树</a></p>
