@@ -557,7 +557,7 @@
   <span class="token keyword">return</span> array<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h1 id="2-选择排序-Selection-sort"><a href="#2-选择排序-Selection-sort" class="headerlink" title="2. 选择排序(Selection sort)"></a>2. 选择排序(Selection sort)</h1><ol>
+<h2 id="2-选择排序-Selection-sort"><a href="#2-选择排序-Selection-sort" class="headerlink" title="2. 选择排序(Selection sort)"></a>2. 选择排序(Selection sort)</h2><ol>
 <li><p>选择排序的基本思想就是一次遍历中只交换一次数据，每次遍历中找到第n小的数字将其放到正确的位置处。</p>
 </li>
 <li><p>动图演示：</p>
@@ -586,7 +586,7 @@
   <span class="token keyword">return</span> array<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h1 id="3-插入排序-Insertion-sort"><a href="#3-插入排序-Insertion-sort" class="headerlink" title="3. 插入排序(Insertion sort)"></a>3. 插入排序(Insertion sort)</h1><ol>
+<h2 id="3-插入排序-Insertion-sort"><a href="#3-插入排序-Insertion-sort" class="headerlink" title="3. 插入排序(Insertion sort)"></a>3. 插入排序(Insertion sort)</h2><ol>
 <li><p>插入排序的基本思想是在要排序的一组数中，假定前n-1个数已经排好序，现在将第n个数插到前面的有序数列中，使得这n个数也是排好顺序的。如此反复循环，直到全部排好顺序。</p>
 </li>
 <li><p>算法描述：</p>
@@ -622,7 +622,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h1 id="4-希尔排序-Shell-sort"><a href="#4-希尔排序-Shell-sort" class="headerlink" title="4. 希尔排序(Shell sort)"></a>4. 希尔排序(Shell sort)</h1><ol>
+<h2 id="4-希尔排序-Shell-sort"><a href="#4-希尔排序-Shell-sort" class="headerlink" title="4. 希尔排序(Shell sort)"></a>4. 希尔排序(Shell sort)</h2><ol>
 <li><p>希尔排序又叫“缩小间隔排序”是基于插入排序的一种排序算法，改进了插入排序，将原数组先分组再进行插入排序。希尔排序减少了很多无效的对比，成功将时间复杂度降低到了O(n2)以下。</p>
 </li>
 <li><p>算法描述：</p>
@@ -656,7 +656,7 @@
    
    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h1 id="5-归并排序-Merge-sort"><a href="#5-归并排序-Merge-sort" class="headerlink" title="5. 归并排序(Merge sort)"></a>5. 归并排序(Merge sort)</h1><ol>
+<h2 id="5-归并排序-Merge-sort"><a href="#5-归并排序-Merge-sort" class="headerlink" title="5. 归并排序(Merge sort)"></a>5. 归并排序(Merge sort)</h2><ol>
 <li><p>我们现在把注意力转移到用分而治之策略来改进排序算法的表现。第一个就是归并排序。归并是一种递归算法，它持续地将一个数组分为两半。如果数组是空的或者只有一个元素，就定义递归结束，意味着排序好了。如果数组还有元素，就将数组拆分然后分别对两个部分调用递归进行排序。归并：把两个排序好的数组结合到一起合成一个单一的有序地新数组。</p>
 </li>
 <li><p>算法描述</p>
@@ -701,7 +701,7 @@
 <li><p>归并排序的分析：为了分析归并算法，我们需要考虑它实施的两个不同步骤。第一步，数组被拆分，这一部分的时间复杂度是O(logn)。而第二步则是合并，每个数组中的元素最终将被放置在排序好的数组中，所以合并操作一个长度为n的数组需要n的数量级的操作。因此归并排序的时间复杂度为O(nlogn)。于此同时，拆分列表需要很大一部分的空间来储存这些被拆分的列表。可能使得归并排序被运用在大数据集合时出现错误。</p>
 </li>
 </ol>
-<h1 id="6-快速排序-Quick-sort"><a href="#6-快速排序-Quick-sort" class="headerlink" title="6. 快速排序(Quick sort)"></a>6. 快速排序(Quick sort)</h1><p>他来了他来了，快排他带着offer走来了。对于校招而言，快速排序的重要性就不用我多说了吧。要求熟记，理解，可以快速手写。同时，快排中的partition思想在很多算法题中也可以灵活运用，这里就不多展开了，感兴趣的小伙伴可以去我的<a href="https://sunjunjie-ee.github.io/2021/07/02/leetcode/">leetcode刷题合集</a>里看。</p>
+<h2 id="6-快速排序-Quick-sort"><a href="#6-快速排序-Quick-sort" class="headerlink" title="6. 快速排序(Quick sort)"></a>6. 快速排序(Quick sort)</h2><p>他来了他来了，快排他带着offer走来了。对于校招而言，快速排序的重要性就不用我多说了吧。要求熟记，理解，可以快速手写。同时，快排中的partition思想在很多算法题中也可以灵活运用，这里就不多展开了，感兴趣的小伙伴可以去我的<a href="https://sunjunjie-ee.github.io/2021/07/02/leetcode/">leetcode刷题合集</a>里看。</p>
 <ol>
 <li><p>快速排序的基本思想：每一轮的排序都会将区域分割成两个独立的分区，其中左分区的序列的所有值均会比右分区的所有值小。然后对子分区进行同样的分割操作，最后达到整体有序。在排序的过程中，由于已经分开的两部分的元素不需要进行比较，故减少了比较的次数，降低了排序时间。</p>
 </li>

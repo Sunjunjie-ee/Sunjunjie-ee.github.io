@@ -963,7 +963,74 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
 
 <h2 id="3-数组"><a href="#3-数组" class="headerlink" title="3.数组"></a>3.数组</h2><p>数组可以说是我们日常写程序中最常用的数据结构了，同时也是题目量，题目种类最多的数据结构。要想把数组的题目做到得心应手一定不要死刷题，要多想多总结，形成自己的知识体系，比如看到去重相关的问题就要考虑哈希，看到排好序的数组就要开始考虑二分法一样。下面就开始数组类型的问题展示：</p>
 <h3 id="3-1原地哈希"><a href="#3-1原地哈希" class="headerlink" title="3.1原地哈希"></a>3.1原地哈希</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指offer03-数组中重复的数字</a></p>
-<p><strong>剑指offer03</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/">剑指offer04-二维数组中的查找</a></p>
+<p><strong>剑指offer03</strong>考察的是在一个数组中查询重复的元素，通常来讲这类题目用哈希都可以解决，遍历数组的时间复杂度为O(n)，另外维护一个hashset的空间复杂度为O(n)。</p>
+<p>本处想分享下原地哈希方法，因为在本题中，所有元素的值都在0～n-1之间，可以通过交换操作使元素与索引值一一对应。令索引值为其本身的值，也就是说将其放到他本应该在的位置。举个例子，现在我们有数组<code>[3,5,2,1,4,3,0]</code>，首先我们遍历数组，第一个元素为3，将其放到索引3处，也就是说交换nums[0]的位置nums[3]，现在数组变为<code>[1,5,2,3,4,3,0]</code>，我们重复上述操作直到遍历到第二个3的位置处当前数组为<code>[0,1,2,3,4,3,5]</code>，按照规则，第二个3应该放到索引3处，可是索引3处已经有了正确的值。所以就可以判断3为重复数。代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findRepeatNumber</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//如果当前元素已经在正确的位置，就不用改动它</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      i<span class="token operator">++</span><span class="token punctuation">;</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//如果当前应该在的位置已经被另一个正确元素所占据，则判断这是一个重复元素</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">return</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">//交换</span>
+    <span class="token keyword">int</span> temp <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    nums<span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>因为依旧需要遍历数组，所以时间复杂度为O(n)，但是空间复杂度却降到了O(1)；</p>
+<p><strong>剑指offer04</strong>中，给出了一个矩阵满足了每一行从左到右递增，从上到下递增的顺序排序。本题不要上来直接就开始做，先开始找规律，我们发现这个矩阵一定满足<code>matirx[i][j] &lt; matrix[i + 1][j + 1]</code>这个条件，也就是说当我们把矩阵旋转45度时，我们会惊奇的发现这是一个二叉搜索树。发现了这个规律后这道题就不难了，下方给出代码:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">findNumberIn2DArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> i <span class="token operator">=</span> matrix<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> matrix<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;</span> target<span class="token punctuation">)</span> i<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+<h3 id="3-2双指针"><a href="#3-2双指针" class="headerlink" title="3.2双指针"></a>3.2双指针</h3><p>双指针式数组类型题目中最常用的办法之一，其核心思想就是维护两个指针对数组进行遍历。</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/">剑指offer21-调整数组顺序使奇数位于偶数前面</a></p>
+<p><strong>剑指offer21</strong>题就是典型的双指针题目，一个指针查找奇数一个指针查找偶数然后进行交换即可。代码如下:</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">exchange</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> r <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> l <span class="token operator">&lt;=</span> r<span class="token punctuation">)</span> l<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> r <span class="token operator">&gt;=</span> l<span class="token punctuation">)</span> r<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">&gt;</span> r<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> temp <span class="token operator">=</span> nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> nums<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 
             </div>
