@@ -584,8 +584,8 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
 <span class="token class-name">ListNode</span> head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> res <span class="token operator">=</span> head<span class="token punctuation">;</span>
 <span class="token keyword">return</span> res<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>剑指offer35题</strong>的关键思想是哈希表，利用<code>map.put(curr, new Node(curr.val)</code>，可以巧妙的将节点的属性储存下来，进行深拷贝的时候查询key值也十分便利。再遍历构建新链表各节点的<code>next</code>和<code>random</code>引用指向即可。</p>
-<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p>在介绍二叉树的问题之前，让我们先来了解下树的几种遍历方式，只要掌握了这几种遍历方式，树的题目都可以迎刃而解。建议读者仔细阅读自己实现一次加深理解。</p>
-<h2 id="2-1递归遍历"><a href="#2-1递归遍历" class="headerlink" title="2.1递归遍历"></a>2.1递归遍历</h2><p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
+<h2 id="2-二叉树"><a href="#2-二叉树" class="headerlink" title="2.二叉树"></a>2.二叉树</h2><p>在介绍二叉树的问题之前，让我们先来了解下树的几种遍历方式，只要掌握了这几种遍历方式，树的题目都可以迎刃而解。建议读者仔细阅读自己实现一次加深理解。</p>
+<h3 id="2-1递归遍历"><a href="#2-1递归遍历" class="headerlink" title="2.1递归遍历"></a>2.1递归遍历</h3><p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
 <ul>
 <li><p>前序遍历：根-&gt;左-&gt;右</p>
 </li>
@@ -652,7 +652,7 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2-2树的深度遍历"><a href="#2-2树的深度遍历" class="headerlink" title="2.2树的深度遍历"></a>2.2树的深度遍历</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指offer07-重建二叉树</a>                                     <a href="#jump1">跳转至题解</a></p>
+<h3 id="2-2树的深度遍历"><a href="#2-2树的深度遍历" class="headerlink" title="2.2树的深度遍历"></a>2.2树的深度遍历</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/">剑指offer07-重建二叉树</a>                                     <a href="#jump1">跳转至题解</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/">剑指offer26-树的子结构</a>                                     <a href="#jump2">跳转至题解</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/">剑指offer27-二叉树的镜像</a>                                 <a href="#jump3">跳转至题解</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/">剑指offer28-对称的二叉树</a>                                 <a href="#jump4">跳转至题解</a></p>
@@ -879,7 +879,7 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
   <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2-3二叉树的层次遍历"><a href="#2-3二叉树的层次遍历" class="headerlink" title="2.3二叉树的层次遍历"></a>2.3二叉树的层次遍历</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指offer32-I-从上到下打印二叉树 I</a></p>
+<h3 id="2-3二叉树的层次遍历"><a href="#2-3二叉树的层次遍历" class="headerlink" title="2.3二叉树的层次遍历"></a>2.3二叉树的层次遍历</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指offer32-I-从上到下打印二叉树 I</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/">剑指offer32-II-从上到下打印二叉树 II</a> </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指offer32-III-从上到下打印二叉树 III</a> </p>
 <p><strong>剑指offer32-I</strong>考察的就是二叉树的层次遍历，多看几遍2.1中的层次遍历代码即可（不理解为啥是中等难度）</p>
@@ -923,7 +923,7 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2-4查找公共父节点"><a href="#2-4查找公共父节点" class="headerlink" title="2.4查找公共父节点"></a>2.4查找公共父节点</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-I-二叉搜索树的最近公共祖先</a></p>
+<h3 id="2-4查找公共父节点"><a href="#2-4查找公共父节点" class="headerlink" title="2.4查找公共父节点"></a>2.4查找公共父节点</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-I-二叉搜索树的最近公共祖先</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-II-二叉树的最近公共祖先</a></p>
 <p><strong>剑指offer68-I</strong>公共父节点可以出现的位置一共有三种情况：</p>
 <ol>
@@ -961,8 +961,8 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
 
 
 
-<h1 id="3-数组"><a href="#3-数组" class="headerlink" title="3.数组"></a>3.数组</h1><p>数组可以说是我们日常写程序中最常用的数据结构了，同时也是题目量，题目种类最多的数据结构。要想把数组的题目做到得心应手一定不要死刷题，要多想多总结，形成自己的知识体系，比如看到去重相关的问题就要考虑哈希，看到排好序的数组就要开始考虑二分法一样。下面就开始数组类型的问题展示：</p>
-<h2 id="3-1原地哈希"><a href="#3-1原地哈希" class="headerlink" title="3.1原地哈希"></a>3.1原地哈希</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指offer03-数组中重复的数字</a></p>
+<h2 id="3-数组"><a href="#3-数组" class="headerlink" title="3.数组"></a>3.数组</h2><p>数组可以说是我们日常写程序中最常用的数据结构了，同时也是题目量，题目种类最多的数据结构。要想把数组的题目做到得心应手一定不要死刷题，要多想多总结，形成自己的知识体系，比如看到去重相关的问题就要考虑哈希，看到排好序的数组就要开始考虑二分法一样。下面就开始数组类型的问题展示：</p>
+<h3 id="3-1原地哈希"><a href="#3-1原地哈希" class="headerlink" title="3.1原地哈希"></a>3.1原地哈希</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指offer03-数组中重复的数字</a></p>
 <p><strong>剑指offer03</strong></p>
 
                 
