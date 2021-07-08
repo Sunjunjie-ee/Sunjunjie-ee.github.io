@@ -585,7 +585,7 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
 <span class="token keyword">return</span> res<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>剑指offer35题</strong>的关键思想是哈希表，利用<code>map.put(curr, new Node(curr.val)</code>，可以巧妙的将节点的属性储存下来，进行深拷贝的时候查询key值也十分便利。再遍历构建新链表各节点的<code>next</code>和<code>random</code>引用指向即可。</p>
 <h2 id="2-二叉树"><a href="#2-二叉树" class="headerlink" title="2.二叉树"></a>2.二叉树</h2><p>在介绍二叉树的问题之前，让我们先来了解下树的几种遍历方式，只要掌握了这几种遍历方式，树的题目都可以迎刃而解。建议读者仔细阅读自己实现一次加深理解。</p>
-<h3 id="2-1递归遍历"><a href="#2-1递归遍历" class="headerlink" title="2.1递归遍历"></a>2.1递归遍历</h3><p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
+<h3 id="2-1基础知识"><a href="#2-1基础知识" class="headerlink" title="2.1基础知识"></a>2.1基础知识</h3><h4 id="2-1-1树的递归遍历"><a href="#2-1-1树的递归遍历" class="headerlink" title="2.1.1树的递归遍历"></a>2.1.1树的递归遍历</h4><p>二叉树的问题都离不开递归思想，常见的递归遍历所有节点的方法分为三种：</p>
 <ul>
 <li><p>前序遍历：根-&gt;左-&gt;右</p>
 </li>
@@ -616,7 +616,7 @@ curr <span class="token operator">=</span> curr<span class="token punctuation">.
         <span class="token function">postOrderRecur</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">postOrderRecur</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-1非递归遍历"><a href="#2-1非递归遍历" class="headerlink" title="2.1非递归遍历"></a>2.1非递归遍历</h2><p>本处开始讨论树的遍历非递归实现。</p>
+<h4 id="2-1-2树的非递归遍历"><a href="#2-1-2树的非递归遍历" class="headerlink" title="2.1.2树的非递归遍历"></a>2.1.2树的非递归遍历</h4><p>本处开始讨论树的遍历非递归实现。</p>
 <p>1). 以前序遍历为例，先以根左右的顺序访问根节点，对于任意节点node，先访问其本身，之后判断左子树是否为空，如果不为空则重复上述步骤直到为空为止。当左子树为空时则开始访问右子树，由于访问左子节点之后需要反过来访问其右子节点所以此处借用栈的支持。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//前序遍历的非递归实现</span>
 <span class="token keyword">void</span> <span class="token function">preOrderStack</span><span class="token punctuation">(</span><span class="token class-name">TreeNode</span> root<span class="token punctuation">)</span><span class="token punctuation">{</span>
