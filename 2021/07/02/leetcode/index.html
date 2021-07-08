@@ -502,7 +502,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="秋招算法合集（包含剑指offer和leetcode）-持续更新ing"><a href="#秋招算法合集（包含剑指offer和leetcode）-持续更新ing" class="headerlink" title="秋招算法合集（包含剑指offer和leetcode）      持续更新ing"></a>秋招算法合集（包含剑指offer和leetcode）      持续更新ing</h1><p>本博客主要目的是记录自己刷题轨迹，整理题型理清思路，利用写博客一方式温故而知新，写者小白一只菜鸡一枚如有写错的地方还望大佬们海涵指点迷津。</p>
-<h2 id="1-LinkedList"><a href="#1-LinkedList" class="headerlink" title="1.LinkedList"></a>1.LinkedList</h2><h3 id="1-1-环形链表"><a href="#1-1-环形链表" class="headerlink" title="1.1 环形链表"></a>1.1 环形链表</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode141-环形链表</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode142-环形链表2</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-duplicate-number/">leetcode287-寻找重复数</a><br>第141题考察点是判断环形链表，第142道题是判断环形的入口点。<br>这三道题都涉及到了环形链表知识点，针对这类问题只需要熟记两次双指针即可，第一次为快慢指针，快指针的步长是慢指针的二倍，当快慢指针第一次相遇时停止。第二次的双指针步数相同。下方列出判断环形的入口的核心代码：</p>
+<h2 id="1-LinkedList"><a href="#1-LinkedList" class="headerlink" title="1.LinkedList"></a>1.LinkedList</h2><h3 id="1-1-环形链表"><a href="#1-1-环形链表" class="headerlink" title="1.1 环形链表"></a>1.1 环形链表</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode141-环形链表</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle/">leetcode142-环形链表2</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-duplicate-number/">leetcode287-寻找重复数</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/">剑指offer52-两个链表的第一个公共节点</a></p>
+<p>第141题考察点是判断环形链表，第142道题是判断环形的入口点。<br>这三道题都涉及到了环形链表知识点，针对这类问题只需要熟记两次双指针即可，第一次为快慢指针，快指针的步长是慢指针的二倍，当快慢指针第一次相遇时停止。第二次的双指针步数相同。下方列出判断环形的入口的核心代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ListNode</span> fast <span class="token operator">=</span> head<span class="token punctuation">,</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
 <span class="token comment">//第一次快慢指针</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -518,6 +522,20 @@ fast <span class="token operator">=</span> head<span class="token punctuation">;
     fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">return</span> fast<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><strong>剑指offer52</strong>寻找两个链表的第一个公共节点问题可以转换成环问题的变种，取双指针分别在两个链表上遍历，当一个链表遍历完成后前往下一个链表，如果两个链表有公共节点的话，就一定会有相等的时候，代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">ListNode</span> <span class="token function">getIntersectionNode</span><span class="token punctuation">(</span><span class="token class-name">ListNode</span> headA<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> headB<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token class-name">ListNode</span> nodeA <span class="token operator">=</span> headA<span class="token punctuation">,</span> <span class="token class-name">ListNode</span> nodeB <span class="token operator">=</span> headB<span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>nodeA <span class="token operator">!=</span> nodeB<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//如果nodeA不为空就继续前往下一个节点，如果为空就前往B链表的头部节点</span>
+    nodeA <span class="token operator">=</span> nodeA <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> nodeA<span class="token punctuation">.</span>next <span class="token operator">:</span> nodeB<span class="token punctuation">;</span>
+    nodeB <span class="token operator">=</span> nodeB <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">?</span> nodeB<span class="token punctuation">.</span>next <span class="token operator">:</span> nodeA<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> nodeA
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意：并不用担心没有公共节点的时候会进入死循环的问题，因为从某种意义上来说，null也是公共节点。当nodeA和nodeB同时为null时循环就会结束了并返回null值。</p>
 <h3 id="1-2-倒转链表"><a href="#1-2-倒转链表" class="headerlink" title="1.2 倒转链表"></a>1.2 倒转链表</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/">剑指offer06-从尾到头打印链表</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/">剑指offer24-反转链表</a><br>反转类型的题都可以考虑用栈做，利用栈先进后出的特性。下方给出<strong>剑指offer06</strong>利用栈的示例代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> temp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -861,9 +879,7 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
   <span class="token keyword">return</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-<h1 id="2-3-二叉树的层次遍历"><a href="#2-3-二叉树的层次遍历" class="headerlink" title="2.3 二叉树的层次遍历"></a>2.3 二叉树的层次遍历</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指offer32-I-从上到下打印二叉树 I</a></p>
+<h2 id="2-3-二叉树的层次遍历"><a href="#2-3-二叉树的层次遍历" class="headerlink" title="2.3 二叉树的层次遍历"></a>2.3 二叉树的层次遍历</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/">剑指offer32-I-从上到下打印二叉树 I</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/">剑指offer32-II-从上到下打印二叉树 II</a> </p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/">剑指offer32-III-从上到下打印二叉树 III</a> </p>
 <p><strong>剑指offer32-I</strong>考察的就是二叉树的层次遍历，多看几遍2.1中的层次遍历代码即可（不理解为啥是中等难度）</p>
@@ -907,9 +923,7 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
   <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-<h1 id="2-4-查找公共父节点"><a href="#2-4-查找公共父节点" class="headerlink" title="2.4 查找公共父节点"></a>2.4 查找公共父节点</h1><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-I-二叉搜索树的最近公共祖先</a></p>
+<h2 id="2-4-查找公共父节点"><a href="#2-4-查找公共父节点" class="headerlink" title="2.4 查找公共父节点"></a>2.4 查找公共父节点</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-I-二叉搜索树的最近公共祖先</a></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/">剑指offer68-II-二叉树的最近公共祖先</a></p>
 <p><strong>剑指offer68-I</strong>公共父节点可以出现的位置一共有三种情况：</p>
 <ol>
@@ -947,26 +961,9 @@ root<span class="token punctuation">.</span>right <span class="token operator">=
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h1 id="3-数组"><a href="#3-数组" class="headerlink" title="3. 数组"></a>3. 数组</h1><p>数组可以说是我们日常写程序中最常用的数据结构了，同时也是题目量，题目种类最多的数据结构。要想把数组的题目做到得心应手一定不要死刷题，要多想多总结，形成自己的知识体系，比如看到去重相关的问题就要考虑哈希，看到排好序的数组就要开始考虑二分法一样。下面就开始数组类型的问题展示：</p>
+<h2 id="3-1-原地哈希"><a href="#3-1-原地哈希" class="headerlink" title="3.1 原地哈希"></a>3.1 原地哈希</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/">剑指offer03-数组中重复的数字</a></p>
+<p><strong>剑指offer03</strong></p>
 
                 
             </div>
